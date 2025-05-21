@@ -34,7 +34,7 @@ const AuthForm = ({type}: { type: FormType }) => {
         },
     });
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    function onSubmit() {
         try {
             if (type === "sign-up") {
                 toast.success("Account created successfully. Please sign in.");
@@ -47,7 +47,7 @@ const AuthForm = ({type}: { type: FormType }) => {
             console.log(error);
             toast.error(`There was an error: ${error}`);
         }
-    };
+    }
 
     const isSignIn = type === "sign-in";
 
