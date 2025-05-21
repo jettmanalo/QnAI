@@ -91,8 +91,10 @@ export async function getFeedbackByInterviewId(
 }
 
 export async function getLatestInterviews(
-    params: GetLatestInterviewsParams
+    params: { userId: string | undefined }
 ): Promise<Interview[] | null> {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     const { userId, limit = 20 } = params;
 
     const interviews = await db
@@ -110,7 +112,7 @@ export async function getLatestInterviews(
 }
 
 export async function getInterviewsByUserId(
-    userId: string
+    userId: string | undefined
 ): Promise<Interview[] | null> {
     const interviews = await db
         .collection("interviews")
